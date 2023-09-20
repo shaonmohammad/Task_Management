@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Task Details{% endblock %}
+{% block content %}
+<div class="max-w-lg mx-auto mt-8 bg-white rounded p-4">
+    <h2 class="text-xl font-semibold mb-4">Task Details</h2>
+
+    <div class="mb-4">
+        <strong>Task Title:</strong>
+        <p>{{ task.title }}</p>
+    </div>
+
+    <div class="mb-4">
+        <strong>Task Description:</strong>
+        <p>{{ task.description }}</p>
+    </div>
+
+    <div class="mb-4">
+        <strong>Deadline:</strong>
+        <p>{{ task.deadline }}</p>
+    </div>
+
+  
+
+    <div class="flex justify-end">
+       
+        <a href="{% url "home" %}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400">
+            Back to Task List
+        </a>
+    </div>
+</div>
+{% endblock %}

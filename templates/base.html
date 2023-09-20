@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-200">
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-500 p-4 text-white">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <h1 class="text-2xl font-semibold">Task Manager</h1>
+            <div class="space-x-4">
+                <a href="{% url "home" %}" class="hover:text-yellow-200">Home</a>
+                <a href="#" class="hover:text-yellow-200">About</a>
+                <a href="#" class="hover:text-yellow-200">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+
+  {% block content %}
+  {% endblock  %}
+</body>
+</html>

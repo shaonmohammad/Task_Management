@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}homepage{% endblock %}
+{% block content %}
+    <!-- Task List Section -->
+    <div class="max-w-4xl mx-auto mt-8 bg-white rounded p-4">
+        <h2 class="text-xl font-semibold mb-4">Task List</h2>
+
+        <!-- Add Task Button -->
+        <div class="flex justify-end mb-4">
+            <a href="{% url "add_tasks" %}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 flex items-center space-x-2">
+                <i class="fas fa-plus"></i> <span class="font-semibold">Add Task</span>
+            </a>
+        </div>
+
+        <!-- Task Table -->
+        <div class="overflow-x-auto">
+            <table class="table-auto w-full">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2 border-b-2 border-gray-500 text-left text-xs leading-4 font-semibold uppercase tracking-wider">Task Title</th>
+                        <th class="px-4 py-2 border-b-2 border-gray-500 text-left text-xs leading-4 font-semibold uppercase tracking-wider">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample Task Item 1 -->
+                    {% for task in tasks %}
+                    <tr>
+                        <td class="px-4 py-2 border-b border-gray-300">
+                            <div class="text-lg">{{task.title}}</div>
+                        </td>
+                        <td class="px-4 py-2 border-b border-gray-300 space-x-2">
+                            <a href="{% url "task_details" task.id %}" class="text-blue-500 hover:text-blue-600" title="Details">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            <a href="{% url "task_edit" task.id %}" class="text-yellow-500 hover:text-yellow-600" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="{% url "task_delete" task.id%}" class="text-red-500 hover:text-red-600" title="Delete">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

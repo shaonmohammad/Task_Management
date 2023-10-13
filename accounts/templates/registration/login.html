@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded shadow-md w-96">
+      <h2 class="text-3xl font-semibold mb-6">Login</h2>
+      <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-4">
+          <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium text-gray-600">Username:</label>
+          <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}" value="{{ form.username.value }}" class="mt-1 p-2 w-full border rounded-md">
+        </div>
+
+        <div class="mb-4">
+          <label for="{{ form.password.id_for_label }}" class="block text-sm font-medium text-gray-600">Password:</label>
+          <input type="password" id="{{ form.password.id_for_label }}" name="{{ form.password.name }}" class="mt-1 p-2 w-full border rounded-md">
+        </div>
+
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

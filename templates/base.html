@@ -15,15 +15,38 @@
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <h1 class="text-2xl font-semibold">Task Manager</h1>
             <div class="space-x-4">
-                <a href="{% url "home" %}" class="hover:text-yellow-200">Home</a>
+                <a href="{% url 'home' %}" class="hover:text-yellow-200">Home</a>
                 <a href="#" class="hover:text-yellow-200">About</a>
                 <a href="#" class="hover:text-yellow-200">Contact</a>
             </div>
+                <ul>
+
+        {% if user.is_authenticated %}
+            <li><a href="{% url "logout" %}">Logout</a></li>
+            {% if user.is_authenticated %}
+            <small>Wellcome {{user.username}}</small>
+            {% endif %}
+        {% else %}
+                    
+            <a href="{% url "login" %}">Login <Or></Or></a>
+            <a href="{% url "register" %}">Registration</a>
+        {% endif %}
+    </ul>
         </div>
     </nav>
 
 
-  {% block content %}
-  {% endblock  %}
+
+
+
+
+   
+        <!-- Search Box -->
+        
+        <!-- Content Block -->
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
 </body>
 </html>

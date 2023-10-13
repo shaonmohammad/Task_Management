@@ -1,9 +1,17 @@
-{% extends "base.html" %}
-{% block title %}homepage{% endblock %}
+{% extends 'base.html' %}
+
 {% block content %}
-    <!-- Task List Section -->
-    <div class="max-w-4xl mx-auto mt-8 bg-white rounded p-4">
+  <div class="max-w-4xl mx-auto mt-8 bg-white rounded p-4">
+    {% if user.is_authenticated %}
         <h2 class="text-xl font-semibold mb-4">Task List</h2>
+        <div class="mb-4">
+            <form action="{% url "search_results" %}" method="get" class="flex items-center">
+                <input type="text" name="q" placeholder="Search tasks..." class="p-2 border border-gray-300 rounded-l-md">
+                <button type="submit" class="bg-blue-500 text-white p-2 rounded-r-md hover:bg-blue-600">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
 
         <!-- Add Task Button -->
         <div class="flex justify-end mb-4">
@@ -22,29 +30,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Sample Task Item 1 -->
                     {% for task in tasks %}
-                    <tr>
-                        <td class="px-4 py-2 border-b border-gray-300">
-                            <div class="text-lg">{{task.title}}</div>
-                        </td>
-                        <td class="px-4 py-2 border-b border-gray-300 space-x-2">
-                            <a href="{% url "task_details" task.id %}" class="text-blue-500 hover:text-blue-600" title="Details">
-                                <i class="fas fa-info-circle"></i>
-                            </a>
-                            <a href="{% url "task_edit" task.id %}" class="text-yellow-500 hover:text-yellow-600" title="Edit">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <a href="{% url "task_delete" task.id%}" class="text-red-500 hover:text-red-600" title="Delete">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    
+                        <tr>
+                            <td class="px-4 py-2 border-b border-gray-300">
+                                <div class="text-lg">{{ task.title }}</div>
+                            </td>
+                            <td class="px-4 py-2 border-b border-gray-300 space-x-2">
+                                <a href="{% url "task_details" task.id %}" class="text-blue-500 hover:text-blue-600" title="Details">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a href="{% url "task_edit" task.id %}" class="text-yellow-500 hover:text-yellow-600" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{% url "task_delete" task.id%}" class="text-red-500 hover:text-red-600" title="Delete">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
                     {% endfor %}
-
                 </tbody>
             </table>
         </div>
-    </div>
+    {% endif %}
+  </div>
 {% endblock %}

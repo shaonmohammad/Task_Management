@@ -13,7 +13,7 @@ class TaskAPI(APIView):
             stu = Task.objects.get(id=id)
             serializers = TaskSerializers(stu)
             return Response(serializers.data)
-        
+
         stu = Task.objects.all()
         serializers = TaskSerializers(stu, many=True)
         return Response(serializers.data)
